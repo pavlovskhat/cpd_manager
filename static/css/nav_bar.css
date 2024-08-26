@@ -1,0 +1,70 @@
+/* Nav bar styling. */
+
+/* Entire navbar div container. */
+#navbar-container {
+    background-color: #023047;
+    padding: 18px 20px;
+    font-weight: 500;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Nav tag of the navbar div container. */
+#navbar-container nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Navigation links unordered list. */
+.navigation {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Logout link unordered list. */
+#logout {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Nav, ul and li tags of navbar
+ div container. */
+#navbar-container nav ul li {
+    margin-right: 30px;
+    display: inline-block;
+}
+
+/* Navigation a tags & logout button. */
+.navbar-btn {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #219EBC;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+/* Navigation a tags and logout button
+ effects. */
+.navbar-btn:hover {
+    background-color: #FFB703;
+}
+
+/* Logout button form tag. */
+#logout-form {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}

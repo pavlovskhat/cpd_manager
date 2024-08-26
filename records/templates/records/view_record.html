@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Record Detail
+{% endblock %}
+{% block styling %}
+    <link rel="stylesheet" href="{% static 'css/jumbotron_form.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="jumbotron">
+        <h2>User: {{ username }}</h2>
+        <h3>Institution: {{ record.institution }}</h3>
+        <h3>Course: {{ record.course }}</h3>
+        <h4>Completion Date: {{ record.completion_date }}</h4>
+    </div>
+{% endblock %}

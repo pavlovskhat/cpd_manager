@@ -1,0 +1,58 @@
+/* User registration templates styling. */
+
+/* Login jumbotron styling. */
+.jumbotron {
+    background-color: #f8f9fa;
+    padding: 2rem 1rem;
+    border-radius: .3rem;
+    box-shadow: 0 0 1rem rgba(0,0,0,.15);
+    text-align: center;
+    max-width: 600px;
+    margin: 2rem auto auto;
+}
+
+/* H2 tag styling class. */
+.medium-title {
+    font-size: 2rem; /* Larger font size */
+    margin-bottom: 1rem; /* Space below the title */
+}
+
+/* Error messages. */
+.errors {
+    background-color: #f8d7da; /* Light red background */
+    border: 1px solid #f5c6cb; /* Red border */
+    color: #721c24; /* Dark red text */
+    padding: 1rem; /* Padding */
+    border-radius: .25rem; /* Rounded corners */
+}
+
+/* Unordered error message list. */
+.error-list {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+}
+
+/* Form text. */
+.form-group {
+    margin-bottom: 1rem; /* Space below form elements */
+}
+
+/* Submit button class. */
+.submit-btn {
+    background-color: #219EBC; /* Blue background */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: .5rem 1rem; /* Padding */
+    border-radius: .25rem; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Submit button class animation. */
+.submit-btn:hover {
+    background-color: #FFB703; /* Darker blue on hover */
+}

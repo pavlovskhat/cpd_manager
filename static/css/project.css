@@ -1,0 +1,8 @@
+/* Project styling. */
+
+/* Entire html and body tag. */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}

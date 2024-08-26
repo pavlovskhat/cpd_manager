@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'css/project.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nav_bar.css' %}">
+{#    <link rel="stylesheet" href="{% static 'css/content_main.css' %}">#}
+    {% block styling %}{% endblock %}
+</head>
+<body>
+    {% include "includes/nav_bar.html" %}
+    <div id="content-main" class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

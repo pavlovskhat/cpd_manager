@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    New Record
+{% endblock %}
+{% block styling %}
+    <link rel="stylesheet" href="{% static 'css/jumbotron_form.css' %}">
+{% endblock %}
+{% block content %}
+    <div id="create-jumbotron" class="jumbotron">
+        <h2 class="medium-title">New Record</h2>
+        {# Error messages. #}
+        {% include "includes/error_messages.html" %}
+        <form method="POST" enctype="multipart/form-data" id="create-form">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="submit-btn">Create</button>
+        </form>
+    </div>
+{% endblock %}

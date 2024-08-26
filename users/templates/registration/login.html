@@ -1,0 +1,24 @@
+{# User login template #}
+{% extends "base.html" %}
+{% load static %}
+
+{% block styling %}
+    <link rel="stylesheet" href="{% static 'css/jumbotron_form.css' %}">
+{% endblock %}
+{% block content %}
+    <div id="login-jumbotron" class="jumbotron">
+        <h2 class="medium-title">Login</h2>
+        {# Error messages. #}
+        {% include "includes/error_messages.html" %}
+        <form method="POST" id="login-form">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <div class="button-group">
+                <button type="submit" class="submit-btn">Login</button>
+                <a href="{% url 'users:register' %}" class="submit-btn">Register</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

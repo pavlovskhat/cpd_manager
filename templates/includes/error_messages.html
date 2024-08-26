@@ -1,0 +1,10 @@
+{# Template snippet lists any error messages. #}
+{% if messages %}
+    <div class="errors">
+        <ul class="error-list">
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endif %}
