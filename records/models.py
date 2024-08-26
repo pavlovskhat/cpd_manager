@@ -20,8 +20,18 @@ class Record(models.Model):
     institution = models.CharField(max_length=100)
     course = models.CharField(max_length=100)
     completion_date = models.DateField()
-    certification = models.FileField(upload_to="files/")
+    certification = models.FileField(upload_to="")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def get_upload_path(self, file_name):
+        return f"user_{self.user.username}/{file_name}"
+
+    def save(self, *args, **kwargs):
+        if not self.certification.name.startswith("user_"):
+            self.certification.name = self.get_upload_path(
+                self.certification.name
+            )
+        super().save(*args, **kwargs)
 
     def __str__(self):
         """
