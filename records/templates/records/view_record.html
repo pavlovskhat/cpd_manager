@@ -7,11 +7,12 @@
 {% endblock %}
 {% block jumbotron_title %}Record Details{% endblock %}
 {% block jumbotron_content %}
-{# Detail view unordered list. #}
+    {# Detail view unordered list. #}
     {% include "records/includes/detail_view_list.html" %}
 {% endblock %}
 {% block form_button %}
     <div class="button-group">
+        <a href="{{ record.certification.url }}" download class="submit-btn">Download Certificate</a>
         <a href="{% url 'records:delete' record.id %}" class="submit-btn">Delete</a>
         <a href="{% url 'records:update' record.id %}" class="submit-btn">Update</a>
     </div>

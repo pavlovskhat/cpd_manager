@@ -10,7 +10,7 @@
                 <td>{{ record.institution }}</td>
                 <td>{{ record.course }}</td>
                 <td>{{ record.completion_date }}</td>
-                <td>Download</td>
+                <td><a href="{{ record.certificate.url }}" download class="submit-btn">Download</a></td>
                 <td><a href="{% url 'records:record' record.id %}">Select</a></td>
             </tr>
             {% empty %}

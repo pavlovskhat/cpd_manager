@@ -1,7 +1,7 @@
 """
 Views related to record management.
 """
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
@@ -12,7 +12,7 @@ from django.contrib.auth.models import User
 
 
 class ViewYourRecords(LoginRequiredMixin, ListView):
-    template_name = "records/view_records_base.html"
+    template_name = "records/view_records.html"
     model = Record
     form_class = SearchRecordForm
     context_object_name = "records"
@@ -85,6 +85,7 @@ class ViewRecord(LoginRequiredMixin, DetailView):
         user = User.objects.get(id=user_id)
         context = super().get_context_data(**kwargs)
         context["username"] = user.username
+        print(self.model.certification)
         return context
 
 
