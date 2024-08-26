@@ -1,4 +1,4 @@
-{# Detailed view list includes. #}
+{# Detail view attribute list. #}
 {% load static %}
 
 <link rel="stylesheet" href="{% static 'records/css/detail_view.css' %}">
@@ -8,6 +8,6 @@
     <li><h3>Course: {{ record.course }}</h3></li>
     <li><h3>Completed: {{ record.completion_date }}</h3></li>
     <li>
-        <img src="{{ record.certification.url }}" alt="certification">
+        <a href="{{ record.certification.url }}" class="submit-btn">View Certificate</a>
     </li>
 </ul>

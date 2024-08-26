@@ -1,7 +1,15 @@
 """
-Views related to record management.
+Record management views.
+
+SuperRequiredMixin: Enforces superuser access.
+ViewYourRecords: User's records list view.
+ViewAllRecords: All records list view.
+ViewRecord: Record detailed view.
+CreateRecord: Create record view.
+DeleteRecord: Delete record view.
+UpdateRecord: Update record view.
 """
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Q
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
@@ -11,13 +19,33 @@ from records.forms import CreateRecordForm, SearchRecordForm
 from django.contrib.auth.models import User
 
 
+class SuperuserRequiredMixin(UserPassesTestMixin):
+    """
+    Validates superuser access.
+
+    :return: True or False.
+    """
+    def test_func(self):
+        return self.request.user.is_superuser
+
+
 class ViewYourRecords(LoginRequiredMixin, ListView):
+    """
+    User's records list view. Login required.
+    """
     template_name = "records/view_records.html"
     model = Record
     form_class = SearchRecordForm
     context_object_name = "records"
 
     def get_queryset(self):
+        """
+        Database records get request filtered by
+        user's id.
+        Searchable dynamic query.
+
+        :return: List of records.
+        """
         user_id = self.request.user.id
         queryset = super().get_queryset().filter(user_id=user_id)
         form = self.form_class(self.request.GET)
@@ -31,6 +59,11 @@ class ViewYourRecords(LoginRequiredMixin, ListView):
         return queryset
 
     def get_context_data(self, **kwargs):
+        """
+        Configure the template context.
+
+        :return: Context dictionary.
+        """
         context = super().get_context_data(**kwargs)
         context["admin_view"] = False
         context["fields"] = [
@@ -40,13 +73,23 @@ class ViewYourRecords(LoginRequiredMixin, ListView):
         return context
 
 
-class ViewAllRecords(LoginRequiredMixin, ListView):
+class ViewAllRecords(LoginRequiredMixin, SuperuserRequiredMixin, ListView):
+    """
+    All records list view. Login required.
+    Restricted to superuser access.
+    """
     template_name = "records/view_records.html"
     model = Record
     context_object_name = "records"
     form_class = SearchRecordForm
 
     def get_queryset(self):
+        """
+        Database records get request.
+        Searchable dynamic query.
+
+        :return: List of records.
+        """
         queryset = self.model.objects.select_related("user")
         form = self.form_class(self.request.GET)
         if form.is_valid():
@@ -60,6 +103,11 @@ class ViewAllRecords(LoginRequiredMixin, ListView):
         return queryset
 
     def get_context_data(self, **kwargs):
+        """
+        Configure the template context.
+
+        :return: Context dictionary.
+        """
         context = super().get_context_data(**kwargs)
         context["admin_view"] = True
         context["fields"] = [
@@ -72,15 +120,18 @@ class ViewAllRecords(LoginRequiredMixin, ListView):
 
 class ViewRecord(LoginRequiredMixin, DetailView):
     """
-    View a specific record inheriting from
-    the DetailView class.
-    Redirects to the index page.
+    Record detailed view. Login required.
     """
     template_name = "records/view_record.html"
     model = Record
     context_object_name = "record"
 
     def get_context_data(self, **kwargs):
+        """
+        Configure the template context.
+
+        :return: Context dictionary.
+        """
         user_id = self.request.user.id
         user = User.objects.get(id=user_id)
         context = super().get_context_data(**kwargs)
@@ -91,9 +142,7 @@ class ViewRecord(LoginRequiredMixin, DetailView):
 
 class CreateRecord(LoginRequiredMixin, CreateView):
     """
-    Create a new academic record in the database
-    inheriting from the CreatView class.
-    Redirects to the index page.
+    Create record create view. Login required.
     """
     model = Record
     form_class = CreateRecordForm
@@ -103,7 +152,8 @@ class CreateRecord(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         """
         Validates the form data.
-        :param form: Create record form.
+
+        :param: form: Create record form.
         :return: Redirect to index page.
         """
         form.instance.user = self.request.user
@@ -112,9 +162,9 @@ class CreateRecord(LoginRequiredMixin, CreateView):
 
 class UpdateRecord(LoginRequiredMixin, UpdateView):
     """
-    Update existing database records inheriting
-    from the UpdateView class.
-    Redirects to the index page.
+    Update record update view. Login required.
+
+    :return: Redirects to the index page.
     """
     template_name = "records/create_record.html"
     model = Record
@@ -124,9 +174,9 @@ class UpdateRecord(LoginRequiredMixin, UpdateView):
 
 class DeleteRecord(LoginRequiredMixin, DeleteView):
     """
-    Delete existing database records inheriting
-    from the DeleteView class.
-    Redirects to the index page.
+    Delete record delete view. Login required.
+
+    :return: Redirects to the index page.
     """
     template_name = "records/delete_record.html"
     model = Record

@@ -1,5 +1,8 @@
 """
-Forms related to record management.
+Record management forms.
+
+CreateRecordForm: Create new record.
+SearchRecordForm: Search for record.
 """
 from django import forms
 from records.models import Record
@@ -11,6 +14,9 @@ class CreateRecordForm(forms.ModelForm):
     User(fk) -> Record .
     """
     class Meta:
+        """
+        Form presentation settings.
+        """
         model = Record
         exclude = ["user"]
         labels = {
@@ -25,6 +31,10 @@ class CreateRecordForm(forms.ModelForm):
 
 
 class SearchRecordForm(forms.ModelForm):
+    """
+    Form to search for record.
+    Dynamically searches based on text input.
+    """
     query = forms.CharField(
         required=False,
         label="Search",
@@ -32,5 +42,8 @@ class SearchRecordForm(forms.ModelForm):
     )
 
     class Meta:
+        """
+        Form presentation settings.
+        """
         model = Record
         fields = []

@@ -1,6 +1,6 @@
 """
-URL patterns dispatcher related to
-user management.
+User management URL dispatcher.
+
 login: User login.
 logout: User logout.
 register: User registration.

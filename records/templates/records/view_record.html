@@ -1,4 +1,4 @@
-{# Detailed record view. #}
+{# Record detail view template. #}
 {% extends "jumbotron_form.html" %}
 {% load static %}
 
@@ -12,8 +12,7 @@
 {% endblock %}
 {% block form_button %}
     <div class="button-group">
-        <a href="{{ record.certification.url }}" download class="submit-btn">Download Certificate</a>
-        <a href="{% url 'records:delete' record.id %}" class="submit-btn">Delete</a>
-        <a href="{% url 'records:update' record.id %}" class="submit-btn">Update</a>
+        <a href="{% url 'records:delete' record.id %}" class="submit-btn">Delete Record</a>
+        <a href="{% url 'records:update' record.id %}" class="submit-btn">Update Record</a>
     </div>
 {% endblock %}
