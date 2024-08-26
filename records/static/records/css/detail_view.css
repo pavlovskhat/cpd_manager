@@ -1,0 +1,17 @@
+/* Record detail view styling. */
+
+/* General detail view styling. */
+.detail-view-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+/* Detail view li tag. */
+.detail-view-list li {
+    margin-bottom: 10px;
+}
+
+/* Detail view h3 tag. */
+.detail-view-list h3 {
+    margin: 0;
+}
