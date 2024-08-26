@@ -1,18 +1,15 @@
 """
-Forms related to user management.
+User management forms.
+
+UserRegistrationForm: User registration form.
 """
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 
 class UserRegistrationForm(UserCreationForm):
-
     """
-    A form that creates User class objects.
-    username: Unique constraint, not null.
-    email: Email constraint, not null.
-    password1: Min 8 chars, unique.
-    password2: Validate with password1.
+    User registration form.
     """
     class Meta:
         model = User
@@ -23,6 +20,9 @@ class UserRegistrationForm(UserCreationForm):
         )
 
     def __init__(self, *args, **kwargs):
+        """
+        Initializing custom form properties.
+        """
         super().__init__(*args, **kwargs)
         if "usable_password" in self.fields:
             del self.fields["usable_password"]

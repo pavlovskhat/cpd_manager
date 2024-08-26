@@ -1,5 +1,8 @@
 """
-Views related to user management.
+User management views.
+
+UserLoginView: User login.
+UserRegistrationView: User registration.
 """
 from django.contrib import messages
 from django.contrib.auth import login
@@ -13,21 +16,20 @@ from users.forms import UserRegistrationForm
 
 class UserLoginView(LoginView):
     """
-    Login functionality inherited from LoginView.
-    Redirects to the records application index.
+    User login view.
     """
     def get_success_url(self):
         """
-        Returns the URL to redirect to after
-        successful login.
-        :return: URL pattern.
+        Generates URL redirect.
+
+        :return: Success URL pattern.
         """
         return reverse_lazy("records:index")
 
     def form_invalid(self, form):
         """
-        Create custom error message if form
-        is invalid.
+        Custom form validation.
+
         :param form: Login form.
         :return: context with updated error message.
         """
@@ -42,9 +44,7 @@ class UserLoginView(LoginView):
 
 class UserRegistrationView(CreateView):
     """
-    User registration view inheriting from
-    CreateView.
-    Creates User objects.
+    User registration view.s
     """
     model = User
     form_class = UserRegistrationForm

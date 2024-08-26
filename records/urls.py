@@ -1,10 +1,13 @@
 """
 URL patterns dispatcher related to
 user management.
-index: Index of all records.
+
+index: Lists your records.
+all_records: Lists all records.
+records: Record detailed view.
 create: Create new record.
 update: Update existing record.
-delete: Delete existing record.
+delete: Delete record.
 """
 from django.urls import path
 from . import views

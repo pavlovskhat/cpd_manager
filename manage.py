@@ -1,5 +1,13 @@
-#!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
+"""
+===================
+CPD Manager service
+===================
+Manages continuous professional development records.
+Create, view, edit and delete records.
+Admin users have access to all records.
+Standard users can only view their own.
+Certifications can be uploaded and downloaded.
+"""
 import os
 import sys
 
