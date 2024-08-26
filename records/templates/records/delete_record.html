@@ -1,16 +1,15 @@
-{% extends "base.html" %}
+{# Record delete template. #}
+{% extends "jumbotron_form.html" %}
 
-{% block title %}
-    Confirmation
-{% endblock %}
-{% block content %}
-    <h2>Confirm Delete</h2>
+{% block title %}Confirmation{% endblock %}
+{% block jumbotron_title %}Confirm Delete{% endblock %}
+{% block jumbotron_content %}
     <p>Are you sure you want to delete record: "{{ record }}"?</p>
+{% endblock %}
+{% block form_button %}
     <form method="POST">
         {% csrf_token %}
-        <button type="submit">
-            Confirm Delete
-        </button>
+        <button type="submit">Confirm Delete</button>
         <a href="{% url 'records:index' %}">Cancel</a>
     </form>
 {% endblock %}

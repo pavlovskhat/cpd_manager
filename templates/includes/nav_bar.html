@@ -1,19 +1,21 @@
+{# Navbar template includes. #}
 <div id="navbar-container" class="container">
     <nav>
         <ul class="navigation">
             <li>
-                <a id="navbar-btn-home" class="navbar-btn" href="{% url 'records:index' %}">Home</a>
+                {# Your records view. #}
+                <a id="navbar-btn-home" class="navbar-btn" href="{% url 'records:index' %}">Your Records</a>
             </li>
             <li class="navigation">
-                <a id="navbar-btn-create" class="navbar-btn" href="{% url 'records:create' %}">Create</a>
-            </li>
-            <li>
-                <a id="navbar-btn-view-mine" class="navbar-btn" href="{% url 'records:index' %}">View Mine</a>
+                {# Create new record form. #}
+                <a id="navbar-btn-create" class="navbar-btn" href="{% url 'records:create' %}">Create New Record</a>
             </li>
             <li class="navigation">
+                {# All records view - admin restricted. #}
                 <a id="navbar-btn-view-all" class="navbar-btn" href="{% url 'records:all_records' %}">View All</a>
             </li>
         </ul>
+        {# Logout form button. #}
         <ul id="logout">
             <li>
                 <form id="logout-form" action="{% url 'users:logout' %}" method="POST">

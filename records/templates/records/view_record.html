@@ -1,17 +1,18 @@
-{% extends "base.html" %}
+{# Detailed record view. #}
+{% extends "jumbotron_form.html" %}
 {% load static %}
 
 {% block title %}
     Record Detail
 {% endblock %}
-{% block styling %}
-    <link rel="stylesheet" href="{% static 'css/jumbotron_form.css' %}">
+{% block jumbotron_title %}Record Details{% endblock %}
+{% block jumbotron_content %}
+{# Detail view unordered list. #}
+    {% include "records/includes/detail_view_list.html" %}
 {% endblock %}
-{% block content %}
-    <div class="jumbotron">
-        <h2>User: {{ username }}</h2>
-        <h3>Institution: {{ record.institution }}</h3>
-        <h3>Course: {{ record.course }}</h3>
-        <h4>Completion Date: {{ record.completion_date }}</h4>
+{% block form_button %}
+    <div class="button-group">
+        <a href="{% url 'records:delete' record.id %}" class="submit-btn">Delete</a>
+        <a href="{% url 'records:update' record.id %}" class="submit-btn">Update</a>
     </div>
 {% endblock %}

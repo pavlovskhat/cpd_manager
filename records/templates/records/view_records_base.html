@@ -1,0 +1,19 @@
+{# Records view base template. #}
+{% extends "base.html" %}
+{% load static %}
+
+{% block styling %}
+    <link rel="stylesheet" href="{% static 'records/css/records.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="browser-window">
+        <div class="browser-header">
+            <div class="tab"></div>
+        </div>
+        {% block table_heading %}{% endblock %}
+        {# Search form. #}
+        {% include "records/includes/search_form.html" %}
+        {# Tabled records. #}
+        {% include "records/includes/tabled_records.html" %}
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{# Tabled records template. #}
+<table>
+    {# Adds table header labels. #}
+    {% include "records/includes/table_headers.html" %}
+    <tbody>
+        {% for record in records %}
+            <tr>
+                {# Adds employee column for all reviews view. #}
+                {% include "records/includes/validate_view.html" %}
+                <td>{{ record.institution }}</td>
+                <td>{{ record.course }}</td>
+                <td>{{ record.completion_date }}</td>
+                <td>Download</td>
+                <td><a href="{% url 'records:record' record.id %}">Select</a></td>
+            </tr>
+            {% empty %}
+            {# Empty table results message. #}
+            {% include "records/includes/no_results.html" %}
+        {% endfor %}
+    </tbody>
+</table>

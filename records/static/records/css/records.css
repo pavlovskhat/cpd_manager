@@ -23,6 +23,19 @@
     font-size: 16px;
 }
 
+.detail-view-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.detail-view-list li {
+    margin-bottom: 10px;
+}
+
+.detail-view-list h3 {
+    margin: 0;
+}
+
 h2 {
     padding: 15px;
     font-size: 20px;

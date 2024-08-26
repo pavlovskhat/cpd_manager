@@ -1,35 +1,11 @@
-{% extends "base.html" %}
-{% load static %}
+{# View records template. #}
+{% extends "records/view_records_base.html" %}
 
 {% block title %}
-    All Records
+    {# Page title based on view type. #}
+    {% include "records/includes/validate_title.html" %}
 {% endblock %}
-{% block styling %}
-    <link rel="stylesheet" href="{% static 'records/css/records.css' %}">
-{% endblock %}
-{% block content %}
-    <div class="browser-window">
-        <div class="browser-header">
-            <div class="tab"></div>
-        </div>
-        {% block table_heading %}{% endblock %}
-        {% include "records/includes/search_form.html" %}
-        <table>
-            {% include "records/includes/table_headers.html" %}
-            <tbody>
-                {% for record in records %}
-                    <tr>
-                        {% include "records/includes/validate_view.html" %}
-                        <td>{{ record.institution }}</td>
-                        <td>{{ record.course }}</td>
-                        <td>{{ record.completion_date }}</td>
-                        <td>Download</td>
-                        <td><a href="{% url 'records:record' record.id %}">Select</a></td>
-                    </tr>
-                    {% empty %}
-                    {% include "records/includes/no_results.html" %}
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+{% block table_heading %}
+    {# Table title based on view type. #}
+    {% include "records/includes/validate_heading.html" %}
 {% endblock %}
