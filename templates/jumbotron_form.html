@@ -1,0 +1,22 @@
+{# Jumbotron form template #}
+{% extends "base.html" %}
+{% load static %}
+
+{% block styling %}
+    <link rel="stylesheet" href="{% static 'css/jumbotron_form.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="jumbotron">
+        <h2 class="medium-title">
+            {% block jumbotron_title %}{% endblock %}
+        </h2>
+        {# Error messages. #}
+        {% include "includes/error_messages.html" %}
+        {% block jumbotron_content %}{% endblock %}
+        <form method="POST" {% block form_parameters %}{% endblock %}>
+            {# Form display. #}
+            {% include "includes/form_group.html" %}
+            {% block form_button %}{% endblock %}
+        </form>
+    </div>
+{% endblock %}

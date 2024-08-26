@@ -12,7 +12,7 @@ from django.contrib.auth.models import User
 
 
 class ViewYourRecords(LoginRequiredMixin, ListView):
-    template_name = "records/view_records.html"
+    template_name = "records/view_records_base.html"
     model = Record
     form_class = SearchRecordForm
     context_object_name = "records"
@@ -41,7 +41,7 @@ class ViewYourRecords(LoginRequiredMixin, ListView):
 
 
 class ViewAllRecords(LoginRequiredMixin, ListView):
-    template_name = "records/test.html"
+    template_name = "records/view_records.html"
     model = Record
     context_object_name = "records"
     form_class = SearchRecordForm

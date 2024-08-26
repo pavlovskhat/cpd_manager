@@ -1,21 +1,8 @@
 {# User registration template. #}
-{% extends "base.html" %}
-{% load static %}
+{% extends "jumbotron_form.html" %}
 
-{% block styling %}
-    <link rel="stylesheet" href="{% static 'css/jumbotron_form.css' %}">
-{% endblock %}
-{% block content %}
-    <div class="jumbotron">
-        <h2 class="medium-title">Registration</h2>
-        {# Error messages. #}
-        {% include "includes/error_messages.html" %}
-        <form method="post" id="registration-form">
-            {% csrf_token %}
-            <div class="form-group">
-                {{ form.as_p }}
-            </div>
-            <button type="submit" class="submit-btn">Register</button>
-        </form>
-    </div>
+{% block title %}Register{% endblock %}
+{% block jumbotron_title %}Registration{% endblock %}
+{% block form_button %}
+    <button type="submit" class="submit-btn">Register</button>
 {% endblock %}
