@@ -10,8 +10,6 @@
 ## 📌 Index
 
 - Requirements
-- Installation
-- Configuration
 
 ---
 
