@@ -4,4 +4,13 @@
 
 <h1 align="center">Continuous Professional Development Manager</h1>
 
+#### Basic finance calculator application that automates investment return and bond repayment calculations.
+---
 
+## 📌 Index
+
+- Requirements
+- Installation
+- Configuration
+
+---
