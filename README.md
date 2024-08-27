@@ -14,3 +14,14 @@
 - Configuration
 
 ---
+
+## 📌 Requirements
+
+This application requires the following modules:
+
+- [Django](https://pypi.org/project/Django/)
+```
+pip install django
+```
+
+---
